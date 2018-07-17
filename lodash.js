@@ -126,7 +126,7 @@ const myEmployees = [
     company: "JASPER",
     email: "coffeydillard@jasper.com",
     phone: "+1 (862) 568-3324",
-    address: "354 Brighton Avenue, Goodville, New Hampshire, 5187",
+    address: "354 Brighton Avenue, Goodville, New Hampshire, 5187",// use map to get addresses here.
     about:
       "Sint sunt nostrud minim est esse ex magna irure laborum. Irure deserunt occaecat ut nulla nostrud dolor aliquip ipsum voluptate ea consectetur ea exercitation. In est consectetur do aliquip est reprehenderit adipisicing non.\r\n",
     registered: "2015-10-08T07:03:04 +06:00",
@@ -282,11 +282,12 @@ const myEmployees = [
   }
 ];
 
-const myEmployeesAddresses = 0; // use map to get addresses here.
+// const myEmployeesAddresses = 0
+const myEmployeesAddresses = _.map(myEmployees, 'address');
 
-// Now we want to use map to get an array of ages of the employees.
+console.log(myEmployeesAddresses)
 
-const myEmployeesAges = 0; // use map to get ages here.
+const myEmployeesAges = _.map(myEmployees, 'age')
 
 // union
 //  Union lets us take 2 arrays, and create a new array that only has 1 entry for
@@ -326,7 +327,7 @@ const breeFriendsEmails = [
   "dave@gmail.com"
 ];
 
-const listToSendEmailsTo = 0; // Put lodash here to make list of the union of the two address.
+const listToSendEmailsTo = _.union(bobFriendsEmails, breeFriendsEmails)
 
 // intersection
 //  Intersection lets us take two arrays, and create a new array that only
@@ -339,7 +340,7 @@ const listToSendEmailsTo = 0; // Put lodash here to make list of the union of th
 // Bob and Bree have decided that instead of inviting everyone they know to their
 // party. They are instead only going to invite those people that they both know.
 
-const listOfSharedEmails = 0; // Use lodash to create the list that are in both lists
+const listOfSharedEmails = _.intersection(bobFriendsEmails, breeFriendsEmails); // Use lodash to create the list that are in both lists
 
 // groupBy
 //  Group By lets us take an array of objects, and group then into groups based
@@ -403,10 +404,10 @@ const purchases = [
   { month: "February", price: 23.65 }
 ];
 
-const purchasesByMonth = 0; // Use groupBy to group the purchases by the month that they were made.
+const purchasesByMonth = _.groupBy(purchases, 'month'); // Use groupBy to group the purchases by the month that they were made.
 
 // Bonus Points
-const totalByMonth = 0; // Use the grouped purchasesByMonth and reduce to create a totalByMonth object.
+// const totalByMonth = _.reduce(purchasesByMonth, ); // Use the grouped purchasesByMonth and reduce to create a totalByMonth object.
 
 // memoize
 //  Memoize lets us take a function that takes a lot of time to run, and cache (or memoize)
@@ -459,7 +460,7 @@ let fastFibonnaci = 0; // use memoize to create a fast fibonnaci.  Use the same
 
 // Here we have a regular axios call to a server.
 
-let getDeathstar = function(n) {
+let getDeathstar = function (n) {
   return axios.get("https://swapi.co/api/starships/" + n);
 };
 
